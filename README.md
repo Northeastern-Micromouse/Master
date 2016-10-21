@@ -33,5 +33,6 @@ You will also need:
 3. msys2 (need to be installed at C:\tools\msys64\).
 4. Several msys2 packages. Use the pacman command to install them: pacman -Syuu gcc git curl zip unzip zlib-devel
 
+Testing lgtm
 
 
