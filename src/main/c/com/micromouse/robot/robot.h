@@ -23,4 +23,7 @@ void ExploreMaze(Robot * winslow);
 // Updates the maze in the robot with the sensor information/
 void UpdateMaze(Robot * winslow, SR * values);
 
+// Moves the robot in the given direction
+void MoveRobot(Robot * winslow, move_t * direction);
+
 #endif  // MICROMOUSE_ROBOT_ROBOT_H_

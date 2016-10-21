@@ -21,6 +21,22 @@ void ExploreMaze(Robot * winslow) {
 	printf("Done mapping the maze.\n");
 }
 
+void MoveRobot(Robot * winslow, move_t * direction) {
+	switch (*direction){
+		case FORWARD:
+			break;
+		case BACKWARD:
+			break;
+		case LEFT:
+			break;
+		case RIGHT:
+			break;
+		default:
+			printf("Unknown direction. Unable to move winslow.\n");
+			break;
+	}
+}
+
 void UpdateMaze(Robot * winslow, SR * values) {
 	// TODO: Implement
 }
