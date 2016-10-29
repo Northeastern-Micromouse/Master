@@ -2,25 +2,24 @@
 #define CC_CELL_CELL_H_
 
 // Abstract class to represent a cell.
-public class Cell {
-public:
+class Cell {
 	// Creates a Cell object at (x,y)
 	Cell(int x, int y);
 
-	// Destructor 
-	~Cell(int x, int y);
-
 	// Gets the x offsest of a Cell
-	int GetLocationX(void);
+	int GetLocationX();
 
 	// Gets the y offset of a Cell
-	int GetLocationY(void);
+	int GetLocationY();
 
 	// Gets the status of whether a Cell has been visited
-	bool IsVisited(void);
+	bool IsVisited();
 
-	// Sets a Cell to visited (True) or not
+	// Sets a Cell to visited (true)
 	void VisitCell();
+
+	// Sets a Cell to unvisited (false) 
+	void unVisitCell();
 
 private:
 	int x;

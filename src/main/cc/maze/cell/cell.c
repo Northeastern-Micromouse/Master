@@ -1,23 +1,27 @@
 #include "cell.h"
 
-Cell Cell::Cell(int x_loc, int y_loc) {
+Cell::Cell(int x_loc, int y_loc) {
 	x = x_loc;
 	y = y_loc;
 	visited = false; 
 }
 
-int Cell::GetLocationX(void) {
+int Cell::GetLocationX() {
 	return x; 
 }
 
-int Cell::GetLocationY(void) {
+int Cell::GetLocationY() {
 	return y; 
 }
 
-bool Cell::IsVisited(void) {
+bool Cell::IsVisited() {
 	return visited; 
 }
 
-void Cell::VisitCell(bool state) {
-	visited = state; 
+void Cell::VisitCell() {
+	visited = true; 
+}
+
+void Cell::UnvisitCell() {
+	visited = false; 
 }
