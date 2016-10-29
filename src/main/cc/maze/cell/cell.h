@@ -19,13 +19,10 @@ public:
 	// Gets the status of whether a Cell has been visited
 	bool isVisited();
 
-
 private:
 	int x;
 	int y; 
 	bool visited; 
-
-	 	
 };
 
 #endif  // CC_CELL_CELL_H_
