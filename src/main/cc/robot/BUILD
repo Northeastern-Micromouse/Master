@@ -4,4 +4,5 @@ cc_library(
     	"robot.h",
     ],
     visibility = ["//visibility:public"],
+    linkopts = ["-std=c++11"],
 )
