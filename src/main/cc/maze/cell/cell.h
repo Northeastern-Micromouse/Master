@@ -11,13 +11,16 @@ public:
 	~Cell(int x, int y);
 
 	// Gets the x offsest of a Cell
-	int getLocationX();
+	int GetLocationX(void);
 
 	// Gets the y offset of a Cell
-	int getLocationY();
+	int GetLocationY(void);
 
 	// Gets the status of whether a Cell has been visited
-	bool isVisited();
+	bool IsVisited(void);
+
+	// Sets a Cell to visited (True) or not
+	void VisitCell();
 
 private:
 	int x;
