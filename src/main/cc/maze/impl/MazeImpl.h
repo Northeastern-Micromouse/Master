@@ -6,7 +6,7 @@
 #include <vector>
 #include <exception>
 
-// Abstract class to represent a maze.
+// Class to represent a maze. A maze is a collections of Cells. 
 class MazeImpl : public Maze {
  public:
  	MazeImpl();
