@@ -1,3 +1,6 @@
+#ifndef CC_CELL_CELL_H_
+#define CC_CELL_CELL_H_
+
 // Cell class
 class Cell {
 	// Creates a Cell object at (x,y)
@@ -23,3 +26,5 @@ private:
 	int y_loc_; 
 	bool visited; 
 };
+
+#endif 
