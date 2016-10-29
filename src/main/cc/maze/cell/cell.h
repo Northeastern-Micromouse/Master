@@ -1,7 +1,4 @@
-#ifndef CC_CELL_CELL_H_
-#define CC_CELL_CELL_H_
-
-// Abstract class to represent a cell.
+// Cell class
 class Cell {
 	// Creates a Cell object at (x,y)
 	Cell(int x, int y);
@@ -15,16 +12,14 @@ class Cell {
 	// Gets the status of whether a Cell has been visited
 	bool IsVisited();
 
-	// Sets a Cell to visited (true)
+	// Marks a Cell as visited
 	void VisitCell();
 
-	// Sets a Cell to unvisited (false) 
+	// Marks a Cell as not visited 
 	void unVisitCell();
 
 private:
-	int x;
-	int y; 
+	int x_loc_;
+	int y_loc_; 
 	bool visited; 
 };
-
-#endif  // CC_CELL_CELL_H_

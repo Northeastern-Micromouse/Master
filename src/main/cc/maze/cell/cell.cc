@@ -1,17 +1,17 @@
 #include "cell.h"
 
-Cell::Cell(int x_loc, int y_loc) {
-	x = x_loc;
-	y = y_loc;
+Cell::Cell(int x, int y) {
+	x_loc_ = x;
+	y_loc_ = y;
 	visited = false; 
 }
 
 int Cell::GetLocationX() {
-	return x; 
+	return x_loc_; 
 }
 
 int Cell::GetLocationY() {
-	return y; 
+	return y_loc_; 
 }
 
 bool Cell::IsVisited() {
