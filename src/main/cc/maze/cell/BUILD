@@ -8,4 +8,5 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
     linkopts = ["-std=c++11"],
+    copts = ["-isystemsrc/main/cc"],
 )

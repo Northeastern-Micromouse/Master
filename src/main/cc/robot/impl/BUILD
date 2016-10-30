@@ -1,15 +1,16 @@
 cc_library(
     name = "impl",
     hdrs = [
-    	"MazeImpl.h",
+    	"RobotImpl.h",
     ],
     srcs = [
-    	"MazeImpl.cc",
+    	"RobotImpl.cc",
     ],
     visibility = ["//visibility:public"],
     deps = [
         "//src/main/cc/maze/cell",
         "//src/main/cc/maze",
+        "//src/main/cc/robot",
     ],
     copts = ["-isystemsrc/main/cc"],
     linkopts = [
