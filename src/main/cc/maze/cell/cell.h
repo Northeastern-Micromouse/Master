@@ -18,7 +18,7 @@ public:
 	// Gets the status of whether a Cell has been visited.
 	bool IsVisited();
 
-	// Visits the cell. 
+	// Visits the cell.
 	void VisitCell();
 
 	// UnVisits the cell.

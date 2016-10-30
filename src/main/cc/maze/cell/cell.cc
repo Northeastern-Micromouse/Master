@@ -13,7 +13,7 @@ Cell::Cell() {
 }
 
 int Cell::GetLocationX() {
-	return x_loc_; 
+	return x_loc_;
 }
 
 int Cell::GetLocationY() {
@@ -29,5 +29,5 @@ void Cell::VisitCell() {
 }
 
 void Cell::UnVisitCell() {
-	visited = false; 
+	visited = false;
 }
