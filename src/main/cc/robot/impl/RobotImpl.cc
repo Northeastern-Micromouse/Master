@@ -1,11 +1,7 @@
 #include <queue>
-<<<<<<< HEAD
 #include <iostream>
-=======
->>>>>>> ffd3a118004e720ac7d4bbd285de574b4f107bd7
 #include "maze/impl/MazeImpl.h"
 #include "RobotImpl.h"
-
 
 RobotImpl::RobotImpl() {
   // No op.
@@ -86,9 +82,7 @@ void RobotImpl::GoBack(Cell::Direction dir) {
 }
 
 std::vector<Cell *> RobotImpl::GetNeighbors() {
-  return maze_.GetNeighbors(curr_loc_.GetXLocation(),
-                            curr_loc_.GetYLocation(),
-                            maze_(curr_loc_.GetXLocation(), curr_loc_.GetYLocation())->GetNeighbors());
+  return maze_.GetNeighbors(curr_loc_.GetXLocation(), curr_loc_.GetYLocation());
 }
 
 void RobotImpl::VisitCurrentCell() {
