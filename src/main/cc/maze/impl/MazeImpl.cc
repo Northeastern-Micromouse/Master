@@ -16,3 +16,8 @@ std::vector<Cell *> MazeImpl::GetNeighbors(int row, int col, std::vector<Cell::D
   return neighborsa;
 }
 
+std::vector<Cell *> MazeImpl::GetNeighbors(int row, int col, std::vector<Cell::Direction> neighbors) {
+	// TODO(matt): Implement
+	return NULL;
+}
+
