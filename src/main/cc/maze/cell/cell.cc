@@ -45,4 +45,5 @@ std::vector<Cell::RelativeDirection> Cell::GetNeighbors() {
 
 std::string Cell::print() {
   // TODO(matt): Implement
+  return "";
 }
