@@ -9,7 +9,7 @@
 //    - y coordinate
 //    - a visited flag
 //    - A list of relative directions representing its neighbors. Two cells are neighbors of one another if
-// they are reachable by only one movement in the respective relative direction.
+//    they are reachable by only one movement in the respective relative direction.
 
 class Cell {
 public:
@@ -51,8 +51,8 @@ public:
 private:
 	int x_loc_;
 	int y_loc_; 
-	bool visited;
-  std::vector<Cell::RelativeDirection> neighbors;
+	bool visited_;
+  std::vector<Cell::RelativeDirection> neighbors_;
 };
 
 #endif 
