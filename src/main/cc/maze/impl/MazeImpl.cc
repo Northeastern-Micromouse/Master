@@ -40,7 +40,7 @@ Cell * MazeImpl::getCell(int row, int col, Cell::RelativeDirection direction) {
         // TODO(matt): error checking
         return nullptr;
     }
-  } catch (std::range_error ex) {
+  } catch (const std::range_error &ex) {
     std::cout << ex.what() << std::endl;
   }
 }
