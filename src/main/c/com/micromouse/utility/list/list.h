@@ -19,7 +19,7 @@ List * InitializeList(Cell * data);
 
 // Free all of the memory associated with the list. Goes through all of the 
 // nodes after this node in the list and frees their memory.
-void ListDestructor(List * list);
+void ListDestructor(List** list);
 
 // Returns the first element of the list.
 Cell * front(List ** list);
