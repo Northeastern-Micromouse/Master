@@ -37,7 +37,6 @@ Robot* InitializeRobot(Location * location) {
 		printf("Error out of memory. Unable to create winslow"
 		" at location x: %d, y: %d.\n", location->x, location->y);
 		return NULL;
-		return NULL;
 	}
 
 	// Check that the location is a valid location.
