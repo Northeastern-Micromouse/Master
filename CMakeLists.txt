@@ -13,7 +13,7 @@ include_directories(src/main/c/com/micromouse/location)
 include_directories(src/main/c/com/micromouse/robot)
 include_directories(src/test/c)
 
-FILE(GLOB_RECURSE SRCFILES main/c/*.c src/main/c/*.h)
+FILE(GLOB_RECURSE SRCFILES src/main/c/*.c src/main/c/*.h)
 
 set(SOURCE_FILES ${SRCFILES} main.c)
 
