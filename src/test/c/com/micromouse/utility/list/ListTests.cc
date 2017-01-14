@@ -4,7 +4,7 @@ extern "C" {
 	#include "src/main/c/com/micromouse/utility/list/list.h"
 }
 
-TEST(ListTests, ShouldInitializeANodeCorreectly) {
+TEST(ListTests, ShouldInitializeANodeCorrectly) {
 	// Given: a cell containing data.
 	Cell* cell = InitializeCell(10, 10);
 
@@ -12,15 +12,15 @@ TEST(ListTests, ShouldInitializeANodeCorreectly) {
 	List* list = InitializeList(cell);
 
 	// Then: the data should be initialized correctly.
-	Location * loc = InitializeLocation(10, 10);
+	Location* loc = InitializeLocation(10, 10);
 	EXPECT_TRUE(SameLocation(loc, list->data_->location));
 	EXPECT_EQ(true, list->data_->top);
 	EXPECT_EQ(true, list->data_->bottom);
 	EXPECT_EQ(true, list->data_->left);
 	EXPECT_EQ(true, list->data_->right);
+  EXPECT_EQ(true, list->data_->open);
 	EXPECT_EQ(false, list->data_->mapped);
 	EXPECT_EQ(false, list->data_->visited);
-	EXPECT_EQ(true, list->data_->open);
 
 	// Free the memory.
 	List** list_head = &list;
