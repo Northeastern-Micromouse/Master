@@ -54,18 +54,25 @@ void NaiveStrategy(Robot *winslow, Move *possibleMoves, int size, List **queue) 
 void AddMove(Robot *winslow, Move move, List **queue) {
   Cell *temp = InitializeCell(winslow->location_->x, winslow->location_->y);
   switch (move.dir_) {
-    case NORTH:;
+    case NORTH:
       temp->location->y = temp->location->y + 1;
+      printf("Adding move: X: %d , Y: %d\n", temp->location->x, temp->location->y);
       Append(temp, queue);
       break;
     case SOUTH:
       temp->location->y = temp->location->y - 1;
+      printf("Adding move: X: %d , Y: %d\n", temp->location->x, temp->location->y);
+      Append(temp, queue);
       break;
     case EAST:
       temp->location->x = temp->location->x + 1;
+      printf("Adding move: X: %d , Y: %d\n", temp->location->x, temp->location->y);
+      Append(temp, queue);
       break;
     case WEST:
       temp->location->x = temp->location->x - 1;
+      printf("Adding move: X: %d , Y: %d\n", temp->location->x, temp->location->y);
+      Append(temp, queue);
       break;
     default:
       printf("Error in AddMove. Invalid Move\n");
