@@ -41,7 +41,7 @@ void ListDestructor(List** list) {
   current = NULL;
 }
 
-Cell* front(List ** list) {
+Cell* Front(List **list) {
 	// TODO: Implement
 	return NULL;
 }

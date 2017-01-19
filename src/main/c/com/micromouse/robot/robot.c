@@ -23,7 +23,7 @@ void ExploreMaze(Robot *winslow) {
   Cell *curr = malloc(sizeof(Cell));
 	// While the maze is not mapped repeat
 	while (!empty(queue)) {
-		curr = front(head);
+		curr = Front(head);
 		// If you ever have nowhere to go or decide to go back go back.
 	}
 	printf("Done mapping the maze.\n");
