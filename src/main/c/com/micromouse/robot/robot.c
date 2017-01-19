@@ -1,5 +1,7 @@
-#include <src/main/c/com/micromouse/utility/list/list.h>
 #include "robot.h"
+
+// The maximum number of possible moves from any given cell.
+int max_possible_moves = 4;
 
 void ExploreMaze(Robot *winslow) {
 	printf("Starting to explore the maze. Location is: x: %d, y: %d \n", winslow->location_->x, winslow->location_->y);

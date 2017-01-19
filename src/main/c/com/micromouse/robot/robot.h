@@ -4,10 +4,8 @@
 #include "src/main/c/com/micromouse/hardware/hardware.h"
 #include "src/main/c/com/micromouse/location/location.h"
 #include "src/main/c/com/micromouse/utility/direction/direction.h"
+#include "src/main/c/com/micromouse/utility/list/list.h"
 #include "src/main/c/com/micromouse/maze/cell.h"
-
-// The maximum number of possible moves from any given cell.
-int max_possible_moves = 4;
 
 typedef struct Robot {
 	Location *location_;
