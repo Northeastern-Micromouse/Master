@@ -21,7 +21,7 @@ void ExploreMaze(Robot *winslow) {
   winslow->maze_[0][0]->mapped = true;
 
   Cell *curr = malloc(sizeof(Cell));
-	// While the maze is not mapped repeat
+
 	while (!empty(queue)) {
 		curr = Front(head);
 		// If you ever have nowhere to go or decide to go back go back.
@@ -43,9 +43,11 @@ void UpdateMaze(Robot *winslow, Move *values, int size) {
 
 void NaiveStrategy(Robot *winslow, Move *possibleMoves, int size, List **queue) {
   printf("Naive Strategy\n");
+  printf("Length is: %d\n", length(*queue));
   for (int i = 0; i < size; i++) {
     if (possibleMoves[i].is_valid_) {
        AddMove(winslow, possibleMoves[i], queue);
+      printf("Length is: %d\n", length(*queue));
     }
   }
 }
