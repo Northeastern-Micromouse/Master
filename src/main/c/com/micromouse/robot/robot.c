@@ -4,11 +4,11 @@ void ExploreMaze(Robot *winslow) {
 	printf("Starting to explore the maze. Location is: x: %d, y: %d \n", winslow->location_->x, winslow->location_->y);
 
 	// Start by checking the sensors.
-  Move *possibleMoves = malloc(sizeof(Move) * 4);
+  Move *possibleMoves = malloc(sizeof(Move) * max_possible_moves);
 	PollSensors(possibleMoves);
 
 	// Update the maze with the values.
-	UpdateMaze(winslow, possibleMoves);
+	UpdateMaze(winslow, possibleMoves, max_possible_moves);
 
 	// Use a Strategy to determine where to go next
 	// TODO: Implement
@@ -25,9 +25,9 @@ void ExploreMaze(Robot *winslow) {
   free(possibleMoves);
 }
 
-void UpdateMaze(Robot *winslow, Move *values) {
+void UpdateMaze(Robot *winslow, Move *values, int size) {
 	printf("Updating the maze\n");
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < size; i++) {
     if (values[i].is_valid_) {
       CanMove(winslow, values[i]);
     }

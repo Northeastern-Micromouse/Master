@@ -6,6 +6,9 @@
 #include "src/main/c/com/micromouse/utility/direction/direction.h"
 #include "src/main/c/com/micromouse/maze/cell.h"
 
+// The maximum number of possible moves from any given cell.
+int max_possible_moves = 4;
+
 typedef struct Robot {
 	Location* location_;
 	Cell* maze_[16][16];
@@ -23,6 +26,6 @@ void RobotDestructor(Robot* winslow);
 void ExploreMaze(Robot* winslow);
 
 // Updates the maze in the robot with the sensor information/
-void UpdateMaze(Robot* winslow, Move* values);
+void UpdateMaze(Robot* winslow, Move* values, int size);
 
 #endif  // MICROMOUSE_ROBOT_ROBOT_H_
