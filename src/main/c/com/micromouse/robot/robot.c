@@ -20,11 +20,10 @@ void ExploreMaze(Robot *winslow) {
   NaiveStrategy(winslow, possibleMoves, max_possible_moves, head);
   winslow->maze_[0][0]->mapped = true;
 
-
+  Cell *curr = malloc(sizeof(Cell));
 	// While the maze is not mapped repeat
 	while (!empty(queue)) {
-		// TODO: Implement
-
+		curr = front(head);
 		// If you ever have nowhere to go or decide to go back go back.
 	}
 	printf("Done mapping the maze.\n");
