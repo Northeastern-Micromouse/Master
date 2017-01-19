@@ -46,8 +46,29 @@ void NaiveStrategy(Robot *winslow, Move *possibleMoves, int size, List **queue) 
   printf("Naive Strategy\n");
   for (int i = 0; i < size; i++) {
     if (possibleMoves[i].is_valid_) {
-      // AddMove(winslow, possibleMoves[i], queue);
+       AddMove(winslow, possibleMoves[i], queue);
     }
+  }
+}
+
+void AddMove(Robot *winslow, Move move, List **queue) {
+  Cell *temp = InitializeCell(winslow->location_->x, winslow->location_->y);
+  switch (move.dir_) {
+    case NORTH:;
+      temp->location->y = temp->location->y + 1;
+      Append(temp, queue);
+      break;
+    case SOUTH:
+      temp->location->y = temp->location->y - 1;
+      break;
+    case EAST:
+      temp->location->x = temp->location->x + 1;
+      break;
+    case WEST:
+      temp->location->x = temp->location->x - 1;
+      break;
+    default:
+      printf("Error in AddMove. Invalid Move\n");
   }
 }
 
