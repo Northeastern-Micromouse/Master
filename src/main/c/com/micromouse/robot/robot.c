@@ -146,7 +146,7 @@ void RobotDestructor(Robot* winslow) {
 // Returns a linked list of moves for the robot to execute, starts by 
 // searching the maze for the path to the goal, and returns the path as a 
 // Linked-list of Moves.
-List* SolveMaze(Robot* winslow, Location *goal) {
+Cell* SolveMaze(Robot* winslow, Location *goal) {
   // Get the maze infomation
   maze_ = winslow->maze;
   
@@ -167,31 +167,35 @@ List* SolveMaze(Robot* winslow, Location *goal) {
       return goal;
     }
     curr_loc = current_cell->location;
+    x_ = current_loc->x;
+    y_ = current_loc->y;
     if(current_cell->east) {
-      x_ = current_loc->x;
-      y_ = current_loc->y;
-      east_cell = maze_[x_+1][y_]
-      if(!east_cell->visited) {
-        east_cell->visited = 1; 
-        east_cell->parent = current_cell;
-        east_loc = east_cell->location;
-        Append(east_loc, queue)
-      }
-
+      queue = VisitCell(current_cell, x_ + 1, y_, maze_, *queue);
     }
     if(current_cell->west) {
-
+      queue = VisitCell(current_cell, x_ - 1, y_, maze_, *queue);
     }
     if(current_cell->north) {
-
+      queue = VisitCell(current_cell, x_, y_ + 1, maze_, *queue);
     }
-    if(current_cell) {
-
+    if(current_cell->south) {
+      queue = VisitCell(current_cell, x_, y_ - 1, maze_, *queue);
     }
     is_queue_empty = empty(queue);
   }
-
-
-
-
+  return 1; // Goal not found, something went wrong.  
 }
+
+// Visit neighbor and update the queue
+List* VisitNeighbor(x, y, maze, *queue) {
+  neighbor_cell = maze[x][y];
+  if(!neighbor_cell->visited) {
+    neighbor_cell->visited = 1;
+    neighbor_cell->parent = current_cell;
+    neighbor_loc = neighbor_cell->location;
+    Append(neighbor_loc, queue);
+    return queue
+  }
+  return queue;
+}
+

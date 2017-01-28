@@ -30,8 +30,10 @@ void ExploreMaze(Robot* winslow);
 // Updates the maze in the robot with the sensor information.
 void UpdateMaze(Robot* winslow, Move* values, int size);
 
-// Solves the maze once the robot has explored it, returns a Linked List of
-// Moves
-List* SolveMaze(Robot* winslow, Location *goal);
+// Solves the maze once the robot has explored it, returns the goal Cell
+Cell* SolveMaze(Robot* winslow, Location *goal);
+
+// Checks neighbors of the cell and does stuff
+void VisitNeighbor(current_cell, x, y, maze, queue);
 
 #endif  // MICROMOUSE_ROBOT_ROBOT_H_
