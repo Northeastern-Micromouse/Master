@@ -15,19 +15,23 @@ typedef struct Robot {
 // Returns a robot location at the given location.
 Robot* InitializeRobot(Location *location);
 
-void CanMove(Robot *winslow, Move move);
+void CanMove(Robot* winslow, Move move);
 
-void NaiveStrategy(Robot *winslow, Move *possibleMoves, int size, List **queue);
+void NaiveStrategy(Robot* winslow, Move* possibleMoves, int size, List** queue);
 
-void AddMove(Robot *winslow, Move move, List **queue);
+void AddMove(Robot* winslow, Move move, List** queue);
 
 // Frees all of the memory associated with the given robot.
-void RobotDestructor(Robot *winslow);
+void RobotDestructor(Robot* winslow);
 
 // Explores the maze.
-void ExploreMaze(Robot *winslow);
+void ExploreMaze(Robot* winslow);
 
-// Updates the maze in the robot with the sensor information/
-void UpdateMaze(Robot *winslow, Move *values, int size);
+// Updates the maze in the robot with the sensor information.
+void UpdateMaze(Robot* winslow, Move* values, int size);
+
+// Solves the maze once the robot has explored it, returns a Linked List of
+// Moves
+List* SolveMaze(Robot* winslow, Location *goal);
 
 #endif  // MICROMOUSE_ROBOT_ROBOT_H_
