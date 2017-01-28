@@ -141,3 +141,57 @@ void RobotDestructor(Robot* winslow) {
 	// Free up the memory for the Robot
 	free(winslow);
 }
+
+// Robot Location -> [Linked-list of [Moves]]
+// Returns a linked list of moves for the robot to execute, starts by 
+// searching the maze for the path to the goal, and returns the path as a 
+// Linked-list of Moves.
+List* SolveMaze(Robot* winslow, Location *goal) {
+  // Get the maze infomation
+  maze_ = winslow->maze;
+  
+  // Create path to return and load starting location into path
+  curr_loc = winslow->location;
+  queue = InitializeList(curr_loc);
+
+  // Mark curr_loc as visited
+  curr_x = curr_loc->x;
+  curr_y = curr_loc->y;
+  curr_cell = maze_[curr_x][curr_y];
+  curr_cell->visited = 1; 
+
+  is_queue_empty = empty(queue)
+  while(!is_queue_empty) {
+    curr_cell = Front(queue);
+    if(current_cell->location == goal) {
+      return goal;
+    }
+    curr_loc = current_cell->location;
+    if(current_cell->east) {
+      x_ = current_loc->x;
+      y_ = current_loc->y;
+      east_cell = maze_[x_+1][y_]
+      if(!east_cell->visited) {
+        east_cell->visited = 1; 
+        east_cell->parent = current_cell;
+        east_loc = east_cell->location;
+        Append(east_loc, queue)
+      }
+
+    }
+    if(current_cell->west) {
+
+    }
+    if(current_cell->north) {
+
+    }
+    if(current_cell) {
+
+    }
+    is_queue_empty = empty(queue);
+  }
+
+
+
+
+}
