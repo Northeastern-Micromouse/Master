@@ -5,6 +5,10 @@
 
 #include "cell_vector.h"
 
+Vector_c* make_vector_c() {
+  return make_vector_c_with_size(10);
+}
+
 Vector_c* make_vector_c_with_size(int nn) {
   Vector_c* vector = malloc(sizeof(Vector_c));
 

@@ -11,7 +11,9 @@ typedef struct Vector_c {
   bool tight;
 } Vector_c;
 
+// Constructs a vector with an initial size of 10.
 Vector_c* make_vector_c();
+// Constructs a vector with an initial size.
 Vector_c* make_vector_c_with_size(int);
 
 void print_vector_c(Vector_c*);
