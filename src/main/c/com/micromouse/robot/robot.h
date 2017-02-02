@@ -18,27 +18,41 @@ Robot* InitializeRobot(Location* location);
 void CanMove(Robot* winslow, Move move);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void NaiveStrategy(Robot* winslow, Move* possibleMoves, int size, List** queue);
 =======
 void NaiveStrategy(Robot* winslow, Move* possibleMoves, int size, List **queue);
 >>>>>>> c1582542f7e1666506c238adcca68c76f1f2acc1
+=======
+
+void NaiveStrategy(Robot* winslow, Move* possibleMoves, int size, List **queue);
+>>>>>>> b477cd1aaef520e312563a58c16e7b85112d9ba1
 
 void AddMove(Robot* winslow, Move move, List** queue);
 
 // Frees all of the memory associated with the given robot.
 void RobotDestructor(Robot* winslow);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b477cd1aaef520e312563a58c16e7b85112d9ba1
 
 void MoveRobot(Robot*, direction_t);
 
 direction_t DetermineDirection(Robot*, Cell*);
+<<<<<<< HEAD
 >>>>>>> c1582542f7e1666506c238adcca68c76f1f2acc1
+=======
+>>>>>>> b477cd1aaef520e312563a58c16e7b85112d9ba1
 
 // Explores the maze.
 void ExploreMaze(Robot* winslow);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b477cd1aaef520e312563a58c16e7b85112d9ba1
 // Updates the maze in the robot with the sensor information.
 void UpdateMaze(Robot* winslow, Move* values, int size);
 
@@ -46,10 +60,17 @@ void UpdateMaze(Robot* winslow, Move* values, int size);
 Cell* SolveMaze(Robot* winslow, Location *goal);
 
 // Checks neighbors of the cell and does stuff
+<<<<<<< HEAD
 List* VisitNeighbor(Cell* current_cell, int x, int y, Robot* winslow, List* queue);
 =======
 // Updates the maze in the robot with the sensor information/
 void UpdateMaze(Robot* winslow, Move* values, int size);
 >>>>>>> c1582542f7e1666506c238adcca68c76f1f2acc1
+=======
+void VisitNeighbor(current_cell, x, y, maze, queue);
+
+// Updates the maze in the robot with the sensor information/
+void UpdateMaze(Robot* winslow, Move* values, int size);
+>>>>>>> b477cd1aaef520e312563a58c16e7b85112d9ba1
 
 #endif  // MICROMOUSE_ROBOT_ROBOT_H_
