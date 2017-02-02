@@ -162,6 +162,7 @@ Cell* SolveMaze(Robot* winslow, Location *goal) {
 
   is_queue_empty = empty(queue)
   while(!is_queue_empty) {
+    // TODO: Dequeue curr_cell from queue.
     curr_cell = Front(queue);
     if(current_cell->location == goal) {
       return goal;
@@ -170,16 +171,16 @@ Cell* SolveMaze(Robot* winslow, Location *goal) {
     x_ = current_loc->x;
     y_ = current_loc->y;
     if(current_cell->east) {
-      queue = VisitCell(current_cell, x_ + 1, y_, maze_, *queue);
+      queue = VisitNeighbor(current_cell, x_ + 1, y_, maze_, *queue);
     }
     if(current_cell->west) {
-      queue = VisitCell(current_cell, x_ - 1, y_, maze_, *queue);
+      queue = VisitNeighbor(current_cell, x_ - 1, y_, maze_, *queue);
     }
     if(current_cell->north) {
-      queue = VisitCell(current_cell, x_, y_ + 1, maze_, *queue);
+      queue = VisitNeighbor(current_cell, x_, y_ + 1, maze_, *queue);
     }
     if(current_cell->south) {
-      queue = VisitCell(current_cell, x_, y_ - 1, maze_, *queue);
+      queue = VisitNeighbor(current_cell, x_, y_ - 1, maze_, *queue);
     }
     is_queue_empty = empty(queue);
   }
@@ -187,7 +188,7 @@ Cell* SolveMaze(Robot* winslow, Location *goal) {
 }
 
 // Visit neighbor and update the queue
-List* VisitNeighbor(x, y, maze, *queue) {
+List* VisitNeighbor(current_cell, x, y, maze, *queue) {
   neighbor_cell = maze[x][y];
   if(!neighbor_cell->visited) {
     neighbor_cell->visited = 1;
@@ -196,6 +197,6 @@ List* VisitNeighbor(x, y, maze, *queue) {
     Append(neighbor_loc, queue);
     return queue
   }
-  return queue;
+  return *queue;
 }
 
