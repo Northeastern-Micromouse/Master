@@ -1,7 +1,7 @@
 // TODO: Need add push and pop functionality for queue operations.
 #include "list.h"
 
-List *InitializeList(Cell *data) {
+List* InitializeList(Cell *data) {
 	// Create the List struct.
 	List *new_list;
 
@@ -42,7 +42,18 @@ void ListDestructor(List** list) {
   current = NULL;
 }
 
-Cell *Front(List **list) {
+void PrintList(List* list) {
+  if (list == NULL) {
+    printf("List is empty\n");
+  }
+  List* head = list;
+  while (head != NULL) {
+    PrintCell(head->data_);
+    head = head->next_;
+  }
+}
+
+Cell* Front(List **list) {
 	// TODO: Implement
 	if (list == NULL) {
 		printf("Invalid argument in Front");
@@ -59,9 +70,20 @@ Cell *Front(List **list) {
 	return result->data_;
 }
 
-Cell *back(List * list) {
-	// TODO: Implement
-	return NULL;
+Cell* back(List** list) {
+	if (list == NULL) {
+    printf("Invalid argument in back\n");
+    return NULL;
+  }
+  if (*list == NULL) {
+    return NULL;
+  }
+  List* iter = *list;
+  while (iter->next_ != NULL) {
+    iter = iter->next_;
+  }
+  iter->prev_->next_ = NULL;
+	return iter->data_;
 }
 
 void PushBack(Cell* data, List* list) {
@@ -103,7 +125,7 @@ void Append(Cell* data, List** list) {
 	head = head->prev_;
 }
 
-Cell *get(int index, List* list) {
+Cell* get(int index, List* list) {
 	// TODO: Implement
 	return NULL;
 }
@@ -126,7 +148,7 @@ int length(List* list) {
 	return count;
 }
 
-bool empty(List *list) {
+bool empty(List* list) {
 	if (list == NULL) {
     return true;
   }
