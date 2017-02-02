@@ -32,7 +32,7 @@ typedef struct Cell {
 	bool mapped;
 
 	// parent for the BFS algorithm
-	Cell* parent;
+	struct Cell* parent;
 } Cell;
 
 // Returns true if the given cells are equal, false otherwise

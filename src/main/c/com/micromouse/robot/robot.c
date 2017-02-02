@@ -106,7 +106,7 @@ Robot* InitializeRobot(Location * location) {
 	// Request memory from the heap.
 	winslow = (Robot*)malloc(sizeof(Robot));
 
-	// Check if the memory is avaliable.
+	// Check if the memory is available.
 	if (winslow == 0) {
 		printf("Error out of memory. Unable to create winslow"
 		" at location x: %d, y: %d.\n", location->x, location->y);
@@ -147,56 +147,53 @@ void RobotDestructor(Robot* winslow) {
 // searching the maze for the path to the goal, and returns the path as a 
 // Linked-list of Moves.
 Cell* SolveMaze(Robot* winslow, Location *goal) {
-  // Get the maze infomation
-  maze_ = winslow->maze;
-  
   // Create path to return and load starting location into path
-  curr_loc = winslow->location;
-  queue = InitializeList(curr_loc);
+  Location* curr_loc = winslow->location_;
 
   // Mark curr_loc as visited
-  curr_x = curr_loc->x;
-  curr_y = curr_loc->y;
-  curr_cell = maze_[curr_x][curr_y];
-  curr_cell->visited = 1; 
+  int curr_x = curr_loc->x;
+  int curr_y = curr_loc->y;
+  List* queue = InitializeList(winslow->maze_[curr_x][curr_y]);
+  Cell* curr_cell = winslow->maze_[curr_x][curr_y];
+  curr_cell->visited = 1;
 
-  is_queue_empty = empty(queue)
+  int is_queue_empty = empty(queue);
   while(!is_queue_empty) {
     // TODO: Dequeue curr_cell from queue.
-    curr_cell = Front(queue);
-    if(current_cell->location == goal) {
-      return goal;
+    curr_cell = Front(&queue);
+    if(curr_cell->location == goal) {
+      return winslow->maze_[goal->x][goal->y];
     }
-    curr_loc = current_cell->location;
-    x_ = current_loc->x;
-    y_ = current_loc->y;
-    if(current_cell->east) {
-      queue = VisitNeighbor(current_cell, x_ + 1, y_, maze_, *queue);
+    curr_loc = curr_cell->location;
+    int x_ = curr_loc->x;
+    int y_ = curr_loc->y;
+    if(curr_cell->east) {
+      queue = VisitNeighbor(curr_cell, x_ + 1, y_, winslow, queue);
     }
-    if(current_cell->west) {
-      queue = VisitNeighbor(current_cell, x_ - 1, y_, maze_, *queue);
+    if(curr_cell->west) {
+      queue = VisitNeighbor(curr_cell, x_ - 1, y_, winslow, queue);
     }
-    if(current_cell->north) {
-      queue = VisitNeighbor(current_cell, x_, y_ + 1, maze_, *queue);
+    if(curr_cell->north) {
+      queue = VisitNeighbor(curr_cell, x_, y_ + 1, winslow, queue);
     }
-    if(current_cell->south) {
-      queue = VisitNeighbor(current_cell, x_, y_ - 1, maze_, *queue);
+    if(curr_cell->south) {
+      queue = VisitNeighbor(curr_cell, x_, y_ - 1, winslow, queue);
     }
     is_queue_empty = empty(queue);
   }
-  return 1; // Goal not found, something went wrong.  
+  return winslow->maze_[0][0]; // Did not find goal cell, return fail.
 }
 
 // Visit neighbor and update the queue
-List* VisitNeighbor(current_cell, x, y, maze, *queue) {
-  neighbor_cell = maze[x][y];
+List* VisitNeighbor(Cell* current_cell, int x, int y, Robot* winslow, List* queue) {
+  Cell* neighbor_cell = winslow->maze_[x][y];
   if(!neighbor_cell->visited) {
     neighbor_cell->visited = 1;
     neighbor_cell->parent = current_cell;
-    neighbor_loc = neighbor_cell->location;
-    Append(neighbor_loc, queue);
-    return queue
+    Location* neighbor_loc = neighbor_cell->location;
+    Append(winslow->maze_[neighbor_loc->x][neighbor_loc->y], &queue);
+    return queue;
   }
-  return *queue;
+  return queue;
 }
 
