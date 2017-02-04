@@ -155,11 +155,11 @@ bool empty(List* list) {
 	return false;
 }
 
-void clear(List** list) {
+void clear_list(List** list) {
 	// TODO: Implement
 }
 
-void erase(Cell* data, List** list) {
+void erase_list(Cell* data, List** list) {
 	// TODO: Implement
 }
 
