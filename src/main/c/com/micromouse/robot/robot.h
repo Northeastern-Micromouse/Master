@@ -36,6 +36,6 @@ void UpdateMaze(Robot* winslow, Move* values, int size);
 
 // Solves the maze once the robot has explored it, returns the goal Cell
 Cell* SolveMaze(Robot* winslow, Location *goal);
-void VisitNeighbor(Cell* current_cell, int x, int y, Robot* winslow, List* queue);
+void VisitNeighbor(Cell* current_cell, int x, int y, Robot* winslow, List** head);
 
 #endif  // MICROMOUSE_ROBOT_ROBOT_H_

@@ -1,4 +1,3 @@
-#include <curses.h>
 #include "robot.h"
 
 // The maximum number of possible moves from any given cell.
@@ -192,16 +191,16 @@ void RobotDestructor(Robot* winslow) {
 Cell* SolveMaze(Robot* winslow, Location* goal) {
   // Create path to return and load starting location into path
   Location* curr_loc = winslow->location_;
-
   // Mark curr_loc as visited
   int curr_x = curr_loc->x;
   int curr_y = curr_loc->y;
   List* queue = InitializeList(winslow->maze_[curr_x][curr_y]);
+  List** head = &queue;
   Cell* curr_cell = winslow->maze_[curr_x][curr_y];
   curr_cell->visited = true;
 
   while(empty(queue)) {
-    curr_cell = back(&queue);
+    curr_cell = back(head);
     curr_loc = curr_cell->location;
     int x_ = curr_loc->x;
     int y_ = curr_loc->y;
@@ -209,29 +208,28 @@ Cell* SolveMaze(Robot* winslow, Location* goal) {
       return winslow->maze_[goal->x][goal->y];
     }
     if(curr_cell->east) {
-      VisitNeighbor(curr_cell, x_ + 1, y_, winslow, queue);
+      VisitNeighbor(curr_cell, x_ + 1, y_, winslow, head);
     }
     if(curr_cell->west) {
-      VisitNeighbor(curr_cell, x_ - 1, y_, winslow, queue);
+      VisitNeighbor(curr_cell, x_ - 1, y_, winslow, head);
     }
     if(curr_cell->north) {
-      VisitNeighbor(curr_cell, x_, y_ + 1, winslow, queue);
+      VisitNeighbor(curr_cell, x_, y_ + 1, winslow, head);
     }
     if(curr_cell->south) {
-      VisitNeighbor(curr_cell, x_, y_ - 1, winslow, queue);
+      VisitNeighbor(curr_cell, x_, y_ - 1, winslow, head);
     }
   }
   return winslow->maze_[0][0]; // Did not find goal cell, return fail.
 }
 
 // Visit neighbor and update the queue
-void VisitNeighbor(Cell* current_cell, int x, int y, Robot* winslow, List* queue) {
+void VisitNeighbor(Cell* current_cell, int x, int y, Robot* winslow, List** head) {
   Cell* neighbor_cell = winslow->maze_[x][y];
   if(!neighbor_cell->visited) {
     neighbor_cell->visited = true;
     neighbor_cell->parent = current_cell;
     Location* neighbor_loc = neighbor_cell->location;
-    List** head = &queue;
     Append(winslow->maze_[neighbor_loc->x][neighbor_loc->y], head);
   }
 }
