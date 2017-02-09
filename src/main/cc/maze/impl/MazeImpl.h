@@ -17,7 +17,7 @@ class MazeImpl : public Maze {
  		if (x < 0 || y < 0) {
  			throw std::range_error("Index out of bounds");
  		}
- 		return maze_[x + (x * y)];
+ 		return maze_[x + (maze_size * y)];
  	}
 
 	std::vector<Cell *> GetNeighbors(int row, int col);
