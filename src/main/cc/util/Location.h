@@ -11,6 +11,8 @@ class Location {
   int x();
   int y();
 
+  void update(int x, int y);
+
   bool isEqual(Location that);
 
   std::string print();
