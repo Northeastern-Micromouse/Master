@@ -14,7 +14,7 @@ TEST(UtilTests, ALocationShouldHaveTheCorrectXAndYValues) {
   EXPECT_EQ(5, location.y());
 }
 
-TEST(UtilTests, ALocationShouldHaveTheCorrectXAndYValues) {
+TEST(UtilTests, ALocationShouldHaveTheCorrectValuesWhenUpdated) {
   // Given: and x and a y coordinate.
   int x = 10;
   int y = 5;
