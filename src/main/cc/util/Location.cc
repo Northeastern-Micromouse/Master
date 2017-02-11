@@ -8,7 +8,7 @@ Location::Location(int x, int y) {
 
 void Location::update(int x, int y) {
   if (x < 0 || y < 0) {
-    throw new std::invalid_argument("Trying to update a location with a value of X: "
+    throw std::invalid_argument("Trying to update a location with a value of X: "
                                     + std::to_string(x) + " Y: " + std::to_string(y));
   }
   x_ = x;
