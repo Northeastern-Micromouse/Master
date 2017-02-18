@@ -23,10 +23,13 @@ We are using [Bazel](https://bazel.io/) to build all of our code. It is an open 
 by Google.
 
 Installation instructions for Mac:
+
 1. Bazel can be installed directly from Homebrew with the command brew install bazel.
-Installing Homebrew:
+
 2. If you encounter problems, make sure homebrew is updated. Do this by running brew update twice.
+
 3. If you still have problems run brew doctor. 
+
 
 Installation instructions for PC can be found [here.](https://bazel.io/versions/master/docs/windows.html)
 
