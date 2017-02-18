@@ -8,12 +8,19 @@ The robot is self contained and battery operated and incorporates many aspects o
 Our Micromouse team is made up of 7 Northeastern undergraduate electrical and computer engineers.
 
 Matthew Murphy - Bachelors of Computer Science and Computer Engineering Class of 2018
+
 Charles Ziegler - Bachelors of Electrical Engineering Class of 2017
+
 Sourabh Marathe - Bachelors of Computer Engineering Class of 2018
+
 Billy Kalfus - Bachelors of Computer Engineering and Physics Class of 2020
+
 Justin Xia - Bachelors of Computer Engineering Class of 2020
+
 Kenneth Afriyie - Bachelors of Computer Engineering Class of 2020
+
 Noah Lichtenstein - Bachelors of Computer Engineering Class of 2020
+
 
 # Getting Started
 We are using [Bazel](https://bazel.io/) to build all of our code. It is an open source tool created
