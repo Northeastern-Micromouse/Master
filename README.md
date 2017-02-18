@@ -1,6 +1,6 @@
 # Northeastern University Micromouse 2017
 
-#[Bazel][https://bazel.build/]
+#[!Bazel(https://bazel.build/)]
 
 # What is Micromouse?
 A Micromouse is a small autonomous vehicle that is able to navigate its way through an unknown maze. 
