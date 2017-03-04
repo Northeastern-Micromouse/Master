@@ -42,12 +42,14 @@ in your terminal.
 	
 1. Instructions can be found [here.](http://code-worrier.com/blog/autocomplete-git/)
 
-
 # Visual GDB Licenses:
 NEU Micromouse - name.
 
 # Qt:
 [Qt](https://www.qt.io)
 
+# Firmware Dev Environment
 
+Requires Visual Studio Community with VisualGDB installed.
+Note: when pushing a change to master, you must go into your project properties and remove all included directories beginning with "C:/" (that is, anything referencing the STM libraries on your computer that are not in the project directories).
 
