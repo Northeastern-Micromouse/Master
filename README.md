@@ -51,5 +51,5 @@ NEU Micromouse - name.
 # Firmware Dev Environment
 
 Requires Visual Studio Community with VisualGDB installed.
-Note: when pushing a change to master, you must go into your project properties and remove all included directories beginning with "C:/" (that is, anything referencing the STM libraries on your computer that are not in the project directories).
+
 
