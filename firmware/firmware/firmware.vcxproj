@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/STM32L4xx_Nucleo;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/Components/Common;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Inc;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/STM32L4xx_Nucleo;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/Components/Common;C:\Users\billy_000\AppData\Roaming\..\Roaming/../Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_HAL/Include;C:\Users\billy_000\AppData\Roaming\..\Roaming/../AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Device/ST/STM32L4xx/Include;C:\Users\billy_000\AppData\Roaming\..\Roaming/../Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L4xxxx/STM32L4xx_HAL_Driver/Inc;C:/Users/billy_000/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_HAL/Include;C:/Users/billy_000/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Device/ST/STM32L4xx/Include;C:/Users/billy_000/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L4xxxx/STM32L4xx_HAL_Driver/Inc;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;USE_HAL_DRIVER;USE_STM32L4XX_NUCLEO;STM32L476xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -47,7 +47,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;C:\Users\billy_000\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Device/ST/STM32L4xx/Include;C:\Users\billy_000\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/STM32L4xx_HAL_Driver/Inc;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/STM32L4xx_Nucleo;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/Components/Common;C:\Users\billy_000\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Include;C:\Users\billy_000\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Inc;$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Device/ST/STM32L4xx/Include;$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/STM32L4xx_HAL_Driver/Inc;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/STM32L4xx_Nucleo;Support/STM32Cube_FW_L4_V1.6.0/Drivers/BSP/Components/Common;$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Include;$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L4xxxx/CMSIS_HAL/Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(ClCompile.PreprocessorDefinitions);NDEBUG=1;RELEASE=1;USE_HAL_DRIVER;USE_STM32L4XX_NUCLEO;STM32L476xx</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -60,19 +60,19 @@
     <ClInclude Include="Inc\stm32l4xx_it.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\StartupFiles\startup_stm32l476xx.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_cortex.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dma.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_gpio.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c_ex.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_pwr.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_pwr_ex.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc_ex.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_uart.c" />
-    <ClCompile Include="..\..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_uart_ex.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\StartupFiles\startup_stm32l476xx.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_cortex.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dma.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_gpio.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c_ex.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_pwr.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_pwr_ex.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc_ex.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_uart.c" />
+    <ClCompile Include="$(appdata)\..\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L4xxxx\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_uart_ex.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\stm32l4xx_hal_msp.c" />
     <ClCompile Include="Src\stm32l4xx_it.c" />
