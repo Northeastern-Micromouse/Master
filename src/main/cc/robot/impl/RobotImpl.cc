@@ -108,20 +108,52 @@ bool RobotImpl::VisitCurrentCell() {
 void RobotImpl::Move(Cell::RelativeDirection dir) {
   switch (dir) {
     case Cell::RelativeDirection::NORTH:
-      //TODO(matt): Actually move forward
+      // TODO(matt): Actually move forward
+      log.log("--------------- Move from Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       curr_loc_.update(curr_loc_.x(), curr_loc_.y() + 1);
+      log.log("--------------- to Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       break;
     case Cell::RelativeDirection::SOUTH:
-      //TODO(matt): Actually move backward
+      // TODO(matt): Actually move backward
+      log.log("--------------- Move from Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       curr_loc_.update(curr_loc_.x(), curr_loc_.y() - 1);
+      log.log("--------------- to Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       break;
     case Cell::RelativeDirection::EAST:
-      //TODO(matt): Actually move left
+      // TODO(matt): Actually move left
+      log.log("--------------- Move from Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       curr_loc_.update(curr_loc_.x() + 1, curr_loc_.y());
+      log.log("--------------- to Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       break;
     case Cell::RelativeDirection::WEST:
-      //TODO(matt): Actually move right
+      // TODO(matt): Actually move right
+      log.log("--------------- Move from Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       curr_loc_.update(curr_loc_.x() - 1, curr_loc_.y());
+      log.log("--------------- to Cell ---------------");
+      log.log("X: " + std::to_string(curr_loc_.x()));
+      log.log("Y: " + std::to_string(curr_loc_.y()));
+      log.log("----------------------------------------------");
       break;
     default:
       break;
