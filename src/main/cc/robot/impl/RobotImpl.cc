@@ -65,7 +65,18 @@ void RobotImpl::GoToGoal() {
 }
 
 void RobotImpl::ComputeFastestPath() {
-  // TODO(matt): Implement
+  Cell* itr;
+  std::queue<Cell *> queue;
+  std::vector<Cell*> neighbors = maze_.GetNeighbors(0,0);
+
+  for (Cell* cell : neighbors) {
+    queue.push(cell);
+  }
+
+  while (!queue.empty()) {
+    itr = queue.front();
+    queue.pop();
+  }
 }
 
 void RobotImpl::ReturnToStart() {

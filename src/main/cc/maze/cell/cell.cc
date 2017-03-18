@@ -1,8 +1,11 @@
 #include <iostream>
+#include <src/main/cc/util/Location.h>
 #include "cell.h"
 
 namespace maze {
 namespace cell {
+
+using util::location::Location;
 
 Cell::Cell(int x, int y) {
   x_loc_ = x;
@@ -12,6 +15,10 @@ Cell::Cell(int x, int y) {
 
 Cell::Cell() : Cell(0,0) {
   // No op.
+}
+
+void Cell::setParent(int x, int y) {
+  parent_.update(x,y);
 }
 
 int Cell::x() {

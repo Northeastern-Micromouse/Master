@@ -2,6 +2,7 @@
 #define CC_CELL_CELL_H_
 
 #include <vector>
+#include <src/main/c/com/micromouse/location/location.h>
 
 namespace maze {
 namespace cell {
@@ -51,10 +52,13 @@ class Cell {
 
   void print();
 
+  void setParent(int x, int y);
+
  private:
   int x_loc_;
   int y_loc_;
   bool visited_;
+  util::location::Location parent_ = util::location::Location(0,0);
   std::vector<Cell::RelativeDirection> neighbors_;
 };
 
