@@ -2,7 +2,7 @@
 #define CC_CELL_CELL_H_
 
 #include <vector>
-#include <src/main/c/com/micromouse/location/location.h>
+#include "util/Location.h"
 
 namespace maze {
 namespace cell {
@@ -31,20 +31,25 @@ class Cell {
   // Constructs a cell at the given location (x,y).
   Cell(int x, int y);
 
+  Cell(const Cell &cell);
+
   // Gets the x offset of a Cell.
-  int x();
+  int x() const;
 
   // Gets the y offset of a Cell.
-  int y();
+  int y() const;
 
   // Gets the status of whether a Cell has been visited.
-  bool isVisited();
+  bool isVisited() const;
 
   // Visits the cell.
   void VisitCell();
 
-  // UnVisits the cell.
+  // UnVisits the cell. This should undo all of the actions taken in VisitCell.
   void UnVisitCell();
+
+  // Should reset all of the flags to their original state.
+  void Reset();
 
   // Returns the neighbors of the given cell. If the cell has no neighbors the resulting
   // vector is empty.
@@ -53,6 +58,8 @@ class Cell {
   void print();
 
   void setParent(int x, int y);
+
+  util::location::Location getParent();
 
  private:
   int x_loc_;
