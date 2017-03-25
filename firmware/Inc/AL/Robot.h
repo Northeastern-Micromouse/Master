@@ -1,21 +1,13 @@
-/**
- * AL.h
- * Declares the Algorithm Layer of the Micromouse firmware
- */
+#ifndef ROBOT_H
+#define ROBOT_H
 
-#ifndef AL_H
-#ifdef __cplusplus
-#define AL_H
-
-#include "PHIL.h"
-
-namespace MMAL
+namespace al
 {
 	class Robot
 	{
 	private:
 		
-		// Represents the distance take by one step
+		// Represents the distance taken by one step
 		const float STEP_DISTANCE = 0;
 		
 		// Represents the distance between the wheels
@@ -28,11 +20,11 @@ namespace MMAL
 		
 	public:
 		
-		Robot(MMPHIL::Motor& left, MMPHIL::Motor& right);
+		Robot(phil::Motor& left, phil::Motor& right);
 		
 		/**** PHYSICAL CONTROL FUNCTIONS ****/
 		
-		enum DriveMethod 
+		enum class DriveMethod 
 		{
 			// Simply drives straight one cell
 			SIMPLE,
@@ -69,7 +61,5 @@ namespace MMAL
 		
 	};
 }
-
-#endif
 
 #endif
