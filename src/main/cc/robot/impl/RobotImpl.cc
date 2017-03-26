@@ -217,10 +217,5 @@ Cell::RelativeDirection RobotImpl::GetDirection(Cell* cell) {
   return Cell::RelativeDirection::NONE;
 }
 
-std::string RobotImpl::print() {
-  // TODO(matt): Implement
-  return "";
-}
-
 }  // impl
 }  // robot
