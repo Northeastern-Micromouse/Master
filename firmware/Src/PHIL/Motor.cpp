@@ -5,7 +5,7 @@ phil::Motor::Motor(pal::Gpio& step, pal::Gpio& dir, pal::Tim& tick):
         tick.SetISR(std::bind<void>(&phil::Motor::Step, *this));
 }
 
-int phil::Motor::GetSteps() const {
+int phil::Motor::getSteps() const {
     return steps_;
 }
 
@@ -15,12 +15,12 @@ void phil::Motor::SetDirection(phil::Motor::Direction d) {
 
 void phil::Motor::Step() {
     step_.Set(true);
-    HAL_Delay(1);
+    HAL_Delay(1000);
     step_.Set(false);
     steps_++;
 }
 
-void phil::Motor::ResetSteps() {
+void phil::Motor::resetSteps() {
     steps_ = 0;
 }
 

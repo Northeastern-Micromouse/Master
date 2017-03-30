@@ -22,10 +22,12 @@ namespace phil
     	};
     	
 		Motor(pal::Gpio& step, pal::Gpio& dir, pal::Tim& tick);
-		int GetSteps() const;
+    	
+		int getSteps() const;
+    	void resetSteps();
+    	
     	void SetDirection(Direction d);
     	void Step();
-		void ResetSteps();
     	
     	void SetAngularVelocity(float w, float radPerStep);
     	void SetMotion(bool on);

@@ -32,7 +32,6 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32l4xx_hal.h"
 
 /* USER CODE BEGIN Includes */
 #ifdef __cplusplus
@@ -657,6 +656,65 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+ADC_HandleTypeDef* getADC1Handle() 
+{
+    return &hadc1;
+}
+
+ADC_HandleTypeDef* getADC2Handle() 
+{
+    return &hadc2;
+}
+
+ADC_HandleTypeDef* getADC3Handle() 
+{
+    return &hadc3;
+}
+
+DMA_HandleTypeDef* getDMAADC1Handle()
+{
+    return &hdma_adc1;
+}
+
+DMA_HandleTypeDef* getDMAADC2Handle()
+{
+    return &hdma_adc2;
+}
+
+DMA_HandleTypeDef* getDMAADC3Handle()
+{
+    return &hdma_adc3;         
+}
+
+I2C_HandleTypeDef* getI2C1Handle()
+{
+    return &hi2c1;
+}
+
+I2C_HandleTypeDef* getI2C2Handle()
+{
+    return &hi2c2;        
+}
+
+TIM_HandleTypeDef* getTIM1Handle()
+{
+    return &htim1;
+}
+
+TIM_HandleTypeDef* getTIM2Handle()
+{
+    return &htim2;
+}
+
+TIM_HandleTypeDef* getTIM3Handle()
+{
+    return &htim3;
+}
+
+TIM_HandleTypeDef* getTIM4Handle()
+{
+    return &htim4;
+}
 
 /* USER CODE END 4 */
 

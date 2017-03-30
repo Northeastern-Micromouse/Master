@@ -9,14 +9,14 @@ namespace pal {
     class Tim {
         
     private:
-        TIM_HandleTypeDef tim_;
+        TIM_HandleTypeDef* tim_;
         std::function<void()> callback_;
         
     public:
         static Tim* registry[];
         static void DelayUs(uint32_t us);
         
-        Tim(TIM_TypeDef* tim);
+        Tim(TIM_HandleTypeDef* tim);
         HAL_StatusTypeDef SetTiming(uint16_t prescaler, uint16_t period);
         void Enable();
         void Disable();

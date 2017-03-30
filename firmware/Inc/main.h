@@ -37,6 +37,8 @@
 
 /* USER CODE BEGIN Includes */
 
+#include "stm32l4xx_hal.h"
+
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
@@ -99,6 +101,22 @@
 
 int CMain(void);
 void Error_Handler();
+
+ADC_HandleTypeDef* getADC1Handle(void);
+ADC_HandleTypeDef* getADC2Handle(void);
+ADC_HandleTypeDef* getADC3Handle(void);
+DMA_HandleTypeDef* getDMAADC1Handle(void);
+DMA_HandleTypeDef* getDMAADC2Handle(void);
+DMA_HandleTypeDef* getDMAADC3Handle(void);
+
+I2C_HandleTypeDef* getI2C1Handle(void);
+I2C_HandleTypeDef* getI2C2Handle(void);
+
+TIM_HandleTypeDef* getTIM1Handle(void);
+TIM_HandleTypeDef* getTIM2Handle(void);
+TIM_HandleTypeDef* getTIM3Handle(void);
+TIM_HandleTypeDef* getTIM4Handle(void);
+
 /* USER CODE END Private defines */
 
 /**

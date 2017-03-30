@@ -14,71 +14,68 @@ void pal::Tim::DelayUs(uint32_t us) {
     while ((DWT->CYCCNT - start) < us);
 }
 
-pal::Tim::Tim(TIM_TypeDef* tim) {
-    tim_.Instance = tim;
-    tim_.Init.CounterMode = TIM_COUNTERMODE_UP;
-    tim_.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-    tim_.Init.RepetitionCounter = 0;
+pal::Tim::Tim(TIM_HandleTypeDef* tim) {
+    tim_ = tim;
     
     Disable();
     
     // Enter the object into the class' registry
-    if (tim == TIM1) {
+    if (tim->Instance == TIM1) {
         pal::Tim::registry[0] = this;
     }
     
-    else if (tim == TIM2) {
+    else if (tim->Instance == TIM2) {
         pal::Tim::registry[1] = this;
     }
     
-    else if (tim == TIM3) {
+    else if (tim->Instance == TIM3) {
         pal::Tim::registry[2] = this;
     }
     
-    else if (tim == TIM4) {
+    else if (tim->Instance == TIM4) {
         pal::Tim::registry[3] = this;
     }
     
-    else if (tim == TIM5) {
+    else if (tim->Instance == TIM5) {
         pal::Tim::registry[4] = this;
     }
     
-    else if (tim == TIM6) {
+    else if (tim->Instance == TIM6) {
         pal::Tim::registry[5] = this;
     }
-    else if (tim == TIM7) {
+    else if (tim->Instance == TIM7) {
         pal::Tim::registry[6] = this;
     }
     
-    else if (tim == TIM8) {
+    else if (tim->Instance == TIM8) {
         pal::Tim::registry[7] = this;
     }
     
-    else if (tim == TIM15) {
+    else if (tim->Instance == TIM15) {
         pal::Tim::registry[8] = this;
     }
     
-    else if (tim == TIM16) {
+    else if (tim->Instance == TIM16) {
         pal::Tim::registry[9] = this;
     }
     
-    else if (tim == TIM17) {
+    else if (tim->Instance == TIM17) {
         pal::Tim::registry[10] = this;
     }
 }
 
 HAL_StatusTypeDef pal::Tim::SetTiming(uint16_t prescaler, uint16_t period) {
-    tim_.Init.Prescaler = prescaler;
-    tim_.Init.Period = period;
-    return HAL_TIM_Base_Init(&tim_);
+    tim_->Init.Prescaler = prescaler;
+    tim_->Init.Period = period;
+    return HAL_TIM_Base_Init(tim_);
 }
 
 void pal::Tim::Enable() {
-    HAL_TIM_Base_Start_IT(&tim_);
+    HAL_TIM_Base_Start_IT(tim_);
 }
 
 void pal::Tim::Disable() {
-    HAL_TIM_Base_Stop_IT(&tim_);
+    HAL_TIM_Base_Stop_IT(tim_);
 }
 
 void pal::Tim::SetISR(std::function<void()> callback) {
@@ -90,7 +87,7 @@ void pal::Tim::ISR() {
 }
 
 TIM_HandleTypeDef* pal::Tim::GetHandle() {
-    return &tim_;
+    return tim_;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
