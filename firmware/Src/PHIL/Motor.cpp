@@ -17,7 +17,7 @@ void phil::Motor::SetDirection(phil::Motor::Direction d) {
 
 void phil::Motor::Step() {
     step_->Set(true);
-    HAL_Delay(1000);
+    HAL_Delay(1);
     step_->Set(false);
     steps_++;
 }
