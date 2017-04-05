@@ -6,11 +6,13 @@ namespace pal {
     
     class Adc {
     public:
-        explicit Adc(ADC_HandleTypeDef adc_handle);
+        explicit Adc(ADC_HandleTypeDef adc_handle, size_t num_channels);
         ~Adc();
-        uint32_t GetData(int pos);
+        uint16_t GetData(int channel);
+        void RegisterChannel(int channel, int pos);
     private:
-        uint16_t data_[2];
+        uint16_t* p_data_;
+        int p_chan_registry_[16];
         ADC_HandleTypeDef adc_handle_;
     };
 
