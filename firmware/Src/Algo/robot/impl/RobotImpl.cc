@@ -1,7 +1,7 @@
 #include <queue>
 #include <iostream>
-#include "RobotImpl.h"
-#include "../../util/logger.h"
+#include "Algo/robot/impl/RobotImpl.h"
+#include "Algo/util/logger.h"
 
 namespace robot {
 namespace impl {
@@ -12,14 +12,19 @@ namespace {
 using maze::cell::Cell;
 using util::location::Location;
 
-RobotImpl::RobotImpl() : enable_debugging_(false),
-                         orientation_(Cell::RelativeDirection::NORTH) {
-  // No op.
+RobotImpl::RobotImpl(al::Robot winslow) : enable_debugging_(false),
+                         orientation_(Cell::RelativeDirection::NORTH), winslow_(winslow) {
+                           // No op.
 }
 
-RobotImpl::RobotImpl(bool enable_debugging) : enable_debugging_(enable_debugging),
-                                              orientation_(Cell::RelativeDirection::NORTH) {
+RobotImpl::RobotImpl(al::Robot winslow, bool enable_debugging) : enable_debugging_(enable_debugging),
+                                              orientation_(Cell::RelativeDirection::NORTH), winslow_(winslow) {
   log.should_log(true);
+                                                  MakeWinslow();
+}
+    
+void RobotImpl::MakeWinslow() {
+  // No op. 
 }
 
 void RobotImpl::StartExploration() {
@@ -34,7 +39,8 @@ void RobotImpl::StartExploration() {
   Cell::RelativeDirection prev_move = Cell::RelativeDirection::NONE;
 
   // Visit the first cell.
-  VisitCurrentCell();
+  // The left and the right walls are always blocked at the start. The f
+  VisitCell(maze_(0,0), 0,0,1);
 
   while (!stack_.empty()) {
     curr_cell = stack_.top();
@@ -42,10 +48,42 @@ void RobotImpl::StartExploration() {
     if (!curr_cell->isVisited()) {
       prev_move = GetDirection(curr_cell);
       // Move the robot to the cell.
-      Move(prev_move);
+        Rotate(prev_move);
+      int left = winslow_.GetNextLeftWall();
+      int right = winslow_.GetNextRightWall();
+      int top = 0;
+      // If any of the sensor values give bogus values retry.
+      while (left == -1 || right == -1 || top == -1) {
+        if (left == -1) {
+            left = winslow_.GetNextLeftWall();
+        }
+        if (right == -1) {
+            right = winslow_.GetNextRightWall();
+        }
+      }
       // Visit the cell.
-      if (!VisitCurrentCell()) {
-        GoBack(prev_move);
+        int x = curr_loc_.x();
+        int y = curr_loc_.y();
+        switch (prev_move) {
+          case Cell::RelativeDirection::NORTH:
+            y += 1;
+            break;
+          case Cell::RelativeDirection::SOUTH:
+            y -= 1;
+            break;
+          case Cell::RelativeDirection::EAST:
+            x += 1;
+            break;
+          case Cell::RelativeDirection::WEST:
+            x -= 1;
+            break;
+          default:
+            break;
+      } 
+        
+      Cell* cell = maze_(x, y);
+      if (!VisitCell(cell, left, right, top)) {
+          Move(prev_move);
       }
     }
   }
@@ -124,15 +162,14 @@ std::vector<Cell*> RobotImpl::GetNeighbors() {
   return maze_.GetNeighbors(curr_loc_.x(), curr_loc_.y());
 }
 
-bool RobotImpl::VisitCurrentCell() {
-  Cell* curr_cell = maze_(curr_loc_.x(), curr_loc_.y());
+bool RobotImpl::VisitCell(Cell* cell, int left, int right, int top) {
   bool should_move_forward = false;
-  if (!curr_cell->isVisited()) {
+  if (!cell->isVisited()) {
     log.log("--------------- Visit A Cell ---------------");
-    log.log("X: " + std::to_string(curr_cell->x()));
-    log.log("Y: " + std::to_string(curr_cell->y()));
+    log.log("X: " + std::to_string(cell->x()));
+    log.log("Y: " + std::to_string(cell->y()));
     log.log("--------------------------------------------");
-    curr_cell->VisitCell(1, 1, 1);
+    cell->VisitCell(left, right, top);
     for (Cell* neighbor : GetNeighbors()) {
       if (!neighbor->isVisited()) {
         should_move_forward = true;
@@ -145,85 +182,65 @@ bool RobotImpl::VisitCurrentCell() {
 
 void RobotImpl::MoveNorth() {
   if (orientation_ == Cell::RelativeDirection::NORTH) {
-    RealMoveForward();
+    // Do nothing.
   } else if (orientation_ == Cell::RelativeDirection::EAST) {
-    TurnWest();
-    RealMoveForward();
+    Rotate(-90);
   } else if (orientation_ == Cell::RelativeDirection::WEST) {
-    TurnEast();
-    RealMoveForward();
+    Rotate(90);
   } else {
-    TurnEast();
-    TurnEast();
-    RealMoveForward();
+    Rotate(180);
   }
   orientation_ = Cell::RelativeDirection::NORTH;
 }
 
 void RobotImpl::MoveEast() {
   if (orientation_ == Cell::RelativeDirection::NORTH) {
-    TurnEast();
-    RealMoveForward();
+    Rotate(90);
   } else if (orientation_ == Cell::RelativeDirection::EAST) {
-    RealMoveForward();
+    // Do nothing.
   } else if (orientation_ == Cell::RelativeDirection::WEST) {
-    TurnEast();
-    TurnEast();
-    RealMoveForward();
+    Rotate(180);
   } else {
-    TurnWest();
-    RealMoveForward();
+    Rotate(-90);
   }
   orientation_ = Cell::RelativeDirection::EAST;
 }
 
 void RobotImpl::MoveSouth() {
   if (orientation_ == Cell::RelativeDirection::NORTH) {
-    TurnEast();
-    TurnEast();
-    RealMoveForward();
+    Rotate(180);
   } else if (orientation_ == Cell::RelativeDirection::EAST) {
-    TurnEast();
-    RealMoveForward();
+    Rotate(90);
   } else if (orientation_ == Cell::RelativeDirection::WEST) {
-    TurnWest();
-    RealMoveForward();
+    Rotate(-90);
   } else {
-    RealMoveForward();
+    // Do nothing.
   }
   orientation_ = Cell::RelativeDirection::SOUTH;
 }
 
 void RobotImpl::MoveWest() {
   if (orientation_ == Cell::RelativeDirection::NORTH) {
-    TurnWest();
-    RealMoveForward();
+    Rotate(-90);
   } else if (orientation_ == Cell::RelativeDirection::EAST) {
-    TurnEast();
-    TurnEast();
-    RealMoveForward();
+    Rotate(180);
   } else if (orientation_ == Cell::RelativeDirection::WEST) {
-    RealMoveForward();
+    // Do nothing.
   } else {
-    TurnEast();
-    RealMoveForward();
+    Rotate(90);
   }
   orientation_ = Cell::RelativeDirection::WEST;
 }
 
-void RobotImpl::RealMoveForward() {
+void RobotImpl::Move(Cell::RelativeDirection dir) {
   // TODO(matt): Implement
 }
 
-void RobotImpl::TurnEast() {
-  // TODO(matt): Implement.
+void RobotImpl::Rotate(int degrees) {
+  // TODO(matt): Implement
 }
 
-void RobotImpl::TurnWest() {
-  // TODO(matt): Implement.
-}
-
-void RobotImpl::Move(Cell::RelativeDirection dir) {
+void RobotImpl::Rotate(Cell::RelativeDirection dir) {
   switch (dir) {
     case Cell::RelativeDirection::NORTH:
       log.log("--------------- Move from Cell ---------------");
