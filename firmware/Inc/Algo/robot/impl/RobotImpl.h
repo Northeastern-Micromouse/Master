@@ -13,8 +13,8 @@ namespace impl {
 
 class RobotImpl : public AlgoRobot {
  public:
-  RobotImpl();
-  RobotImpl(bool enable_debugging);
+  RobotImpl(al::Robot winslow);
+  RobotImpl(al::Robot winslow, bool enable_debugging);
 
   void StartExploration() override;
 
@@ -29,7 +29,7 @@ class RobotImpl : public AlgoRobot {
   std::stack<maze::cell::Cell *> stack_;
   bool enable_debugging_;
   maze::cell::Cell::RelativeDirection orientation_;
-  al::Robot* winslow_;
+  al::Robot winslow_;
 
   void MakeWinslow();
   void ReturnToStart();
