@@ -52,6 +52,15 @@ void RobotImpl::StartExploration() {
       int left = winslow_.GetNextLeftWall();
       int right = winslow_.GetNextRightWall();
       int top = 0;
+      // If any of the sensor values give bogus values retry.
+      while (left == -1 || right == -1 || top == -1) {
+        if (left == -1) {
+            left = winslow_.GetNextLeftWall();
+        }
+        if (right == -1) {
+            right = winslow_.GetNextRightWall();
+        }
+      }
       // Visit the cell.
         int x = curr_loc_.x();
         int y = curr_loc_.y();
