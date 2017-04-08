@@ -35,7 +35,7 @@ class RobotImpl : public AlgoRobot {
   void ReturnToStart();
   void GoBack(maze::cell::Cell::RelativeDirection dir);
   std::vector<maze::cell::Cell *> GetNeighbors();
-  bool VisitCurrentCell();
+  bool VisitCurrentCell(int left, int right, int top);
   void Move(maze::cell::Cell::RelativeDirection dir);
   void MoveNorth();
   void RealMoveForward();

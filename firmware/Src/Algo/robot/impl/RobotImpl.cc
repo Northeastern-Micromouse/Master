@@ -129,7 +129,7 @@ std::vector<Cell*> RobotImpl::GetNeighbors() {
   return maze_.GetNeighbors(curr_loc_.x(), curr_loc_.y());
 }
 
-bool RobotImpl::VisitCurrentCell() {
+bool RobotImpl::VisitCurrentCell(int left, int right, int top) {
   Cell* curr_cell = maze_(curr_loc_.x(), curr_loc_.y());
   bool should_move_forward = false;
   if (!curr_cell->isVisited()) {
@@ -137,7 +137,7 @@ bool RobotImpl::VisitCurrentCell() {
     log.log("X: " + std::to_string(curr_cell->x()));
     log.log("Y: " + std::to_string(curr_cell->y()));
     log.log("--------------------------------------------");
-    curr_cell->VisitCell(1,1,1);
+    curr_cell->VisitCell(left, right, top);
     for (Cell* neighbor : GetNeighbors()) {
       if (!neighbor->isVisited()) {
         should_move_forward = true;
