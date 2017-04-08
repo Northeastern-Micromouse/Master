@@ -2,15 +2,15 @@
 #define CC_ROBOT_IMPL_ROBOTIMPL_H_
 
 #include <stack>
-#include "../robot.h"
-#include "../../maze/impl/MazeImpl.h"
-#include "../../util/Location.h"
-#include "../../maze/cell/cell.h"
+#include "Algo/robot/Algorobot.h"
+#include "Algo/maze/impl/MazeImpl.h"
+#include "Algo/util/Location.h"
+#include "Algo/maze/cell/cell.h"
 
 namespace robot {
 namespace impl {
 
-class RobotImpl : public Robot {
+class RobotImpl : public AlgoRobot {
  public:
   RobotImpl();
   RobotImpl(bool enable_debugging);

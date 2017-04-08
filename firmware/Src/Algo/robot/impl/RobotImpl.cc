@@ -1,7 +1,7 @@
 #include <queue>
 #include <iostream>
-#include "RobotImpl.h"
-#include "../../util/logger.h"
+#include "Algo/robot/impl/RobotImpl.h"
+#include "Algo/util/logger.h"
 
 namespace robot {
 namespace impl {
