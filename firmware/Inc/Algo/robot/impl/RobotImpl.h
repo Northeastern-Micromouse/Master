@@ -2,6 +2,7 @@
 #define CC_ROBOT_IMPL_ROBOTIMPL_H_
 
 #include <stack>
+#include "Robot.h"
 #include "Algo/robot/Algorobot.h"
 #include "Algo/maze/impl/MazeImpl.h"
 #include "Algo/util/Location.h"
@@ -28,7 +29,9 @@ class RobotImpl : public AlgoRobot {
   std::stack<maze::cell::Cell *> stack_;
   bool enable_debugging_;
   maze::cell::Cell::RelativeDirection orientation_;
+  al::Robot* winslow_;
 
+  void MakeWinslow();
   void ReturnToStart();
   void GoBack(maze::cell::Cell::RelativeDirection dir);
   std::vector<maze::cell::Cell *> GetNeighbors();

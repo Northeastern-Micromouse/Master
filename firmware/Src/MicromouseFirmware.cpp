@@ -20,10 +20,16 @@ extern "C" {
 #include "Reflectance.h"
 #include "DriveSystem.h"
 #include "Distance.h"
+#include "Algo/robot/impl/RobotImpl.h"
 
 int main(void) {
      
     CMain();
+    AlgoRobot* winslow = new robot::impl::RobotImpl(true);
+    winslow->StartExploration();
+    winslow->ComputeFastestPath();
+    winslow->GoToGoal();
+    delete winslow;
     
 //     pal::Gpio left_step = pal::Gpio(S_MOTOR_B_STEP_GPIO_Port, S_MOTOR_B_STEP_Pin);
 //     pal::Gpio left_dir = pal::Gpio(S_MOTOR_B_DIR_GPIO_Port, S_MOTOR_B_DIR_Pin);

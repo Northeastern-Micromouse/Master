@@ -21,6 +21,10 @@ RobotImpl::RobotImpl(bool enable_debugging) : enable_debugging_(enable_debugging
                                               orientation_(Cell::RelativeDirection::NORTH) {
   log.should_log(true);
 }
+    
+void RobotImpl::MakeWinslow() {
+        
+}
 
 void RobotImpl::StartExploration() {
   log.log("--------------- Start Exploration ---------------");

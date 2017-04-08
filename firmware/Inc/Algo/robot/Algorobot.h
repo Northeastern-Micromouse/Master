@@ -13,6 +13,11 @@ class AlgoRobot {
 
   // Moves the robot to the goal using the path found in ComputeFastestPath.
   virtual void GoToGoal() = 0;
+  
+  // Virtual destructor for inheritence
+    virtual ~AlgoRobot() {
+        // No op implemented for inheritence
+    }
 };
 
 #endif  // CC_ROBOT_ROBOT_H_
