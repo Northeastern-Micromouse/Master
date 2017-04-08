@@ -46,9 +46,9 @@ int main(void) {
 //             106, 30, M_PI / 100
 //         );
     
-//     pal::I2C imuI2c = pal::I2C(&hi2c1, 10000);
-//     phil::IMU imu = phil::IMU(&imuI2c, BNO055_ADDRESS_A);
-//     imu.Initialize();
+//    pal::I2C imuI2c = pal::I2C(&hi2c1, 10000);
+//    phil::IMU imu = phil::IMU(&imuI2c, BNO055_ADDRESS_A);
+//    imu.Initialize();
     
     //al::Robot robot = al::Robot(&drive_system);
     //robot.SimpleDrive(100, 200);
@@ -63,34 +63,55 @@ int main(void) {
     
     //robot.SimpleDrive(1.5, 200);
     
-//     while (1) {
-//         float heading;
-//         HAL_StatusTypeDef error = imu.GetHeading(heading);
-//         HAL_Delay(1);
-      
+ //   while (1) {
+ //       float heading;
+ //       HAL_StatusTypeDef error = imu.GetHeading(heading);
+ //       HAL_Delay(1);
+ //   }      
 //         printf("!STARTED PROGRAM!\n");
 
-//         pal::Adc adc1(hadc1, 2);
-//         pal::Adc adc2(hadc2, 3);
-//         pal::Adc adc3(hadc3, 1);
-//         pal::I2C i2c(&hi2c1, 10000);
-//         pal::Gpio left_step = pal::Gpio(S_MOTOR_B_STEP_GPIO_Port, S_MOTOR_B_STEP_Pin);
-//         pal::Gpio left_dir = pal::Gpio(S_MOTOR_B_DIR_GPIO_Port, S_MOTOR_B_DIR_Pin);
-//         pal::Gpio right_step = pal::Gpio(S_MOTOR_A_STEP_GPIO_Port, S_MOTOR_A_STEP_Pin);
-//         pal::Gpio right_dir = pal::Gpio(S_MOTOR_A_DIR_GPIO_Port, S_MOTOR_A_DIR_Pin);
-//         pal::Tim drive_tick = pal::Tim(&htim1);
+         pal::Adc adc1(hadc1, 2);
+         pal::Adc adc2(hadc2, 3);
+         pal::Adc adc3(hadc3, 1);
+         pal::I2C i2c(&hi2c1, 10000);
+         pal::Gpio left_step = pal::Gpio(S_MOTOR_B_STEP_GPIO_Port, S_MOTOR_B_STEP_Pin);
+         pal::Gpio left_dir = pal::Gpio(S_MOTOR_B_DIR_GPIO_Port, S_MOTOR_B_DIR_Pin);
+         pal::Gpio right_step = pal::Gpio(S_MOTOR_A_STEP_GPIO_Port, S_MOTOR_A_STEP_Pin);
+         pal::Gpio right_dir = pal::Gpio(S_MOTOR_A_DIR_GPIO_Port, S_MOTOR_A_DIR_Pin);
+         pal::Gpio driver_rst = pal::Gpio(DRIVER_RSTn_GPIO_Port, DRIVER_RSTn_Pin);
+         pal::Tim drive_tick = pal::Tim(&htim1);
 
-//         phil::Distance distA(adc1, 5, 0);
-//         phil::Distance distB(adc2, 6, 0);
-//         phil::Reflectance reflA(adc1, 7, 1, 0);
-//         phil::Reflectance reflB(adc2, 8, 1, 1);
-//         phil::Reflectance reflC(adc3, 4, 0, 2);
-//         phil::IMU imu(&i2c, BNO055_ADDRESS_A);
-//         imu.Initialize();
-//         phil::DriveSystem drive_system(&left_step, &left_dir, &right_step, &right_dir, &drive_tick, 1, 1, 1);
+         phil::Distance distA(adc1, 5, 0);
+         phil::Distance distB(adc2, 6, 0);
+         phil::Reflectance reflA(adc1, 7, 1, 0);
+         phil::Reflectance reflB(adc2, 8, 1, 1);
+         phil::Reflectance reflC(adc3, 4, 0, 2);
+         phil::IMU imu(&i2c, BNO055_ADDRESS_A);
+         imu.Initialize();
+         phil::DriveSystem drive_system(&left_step, &left_dir, &right_step, &right_dir, &drive_tick, 106, 30, M_PI/(100*16));
 
-//         al::Robot robot(&drive_system, &imu, &distB, &distA, &reflA, &reflB, &reflC);
-
+         al::Robot robot(&drive_system, &imu, &distB, &distA, &reflA, &reflB, &reflC);
+    
+    driver_rst.Set(true);
+    /*
+    for (int i = 0; i < 4; i++) {
+        robot.CorrectiveDrive(180, 350);
+        //robot.SimpleDrive(180, 250);
+        //float heading;
+        //imu.GetHeading(heading);
+        //robot.Turn(util::DeltaAngle(heading, 0), 2*M_PI);
+    }
+    */
+    
+    robot.CorrectiveDrive(180, 350);
+    while (1) {
+        robot.Turn(90, 2*M_PI);
+        robot.CorrectiveDrive(360, 350);
+    }
+    
+   // robot.Turn(90, 2*M_PI);
+    
+    
 //         printf("Entered main program loop\n");
 //     }
   }
